@@ -18,7 +18,7 @@ RenderCommand::~RenderCommand() {
     
 }
 
-bool RenderCommand::init(float globalZOrder, const Matrix& transform, bool is3D) {
+bool RenderCommand::init(float globalZOrder, const Matrix& transform) {
     _global_z_order = globalZOrder;
     
     

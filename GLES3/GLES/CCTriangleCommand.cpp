@@ -23,8 +23,8 @@ TriangleCommand::~TriangleCommand() {
     
 }
 
-bool TriangleCommand::init(float globalZOrder, GLuint textureID, ProgramState* state, BlendFunc blend, const Triangles& triangles, const Matrix& modelView, bool is3D) {
-    RenderCommand::init(globalZOrder, modelView, is3D);
+bool TriangleCommand::init(float globalZOrder, GLuint textureID, ProgramState* state, BlendFunc blend, const Triangles& triangles, const Matrix& modelView) {
+    RenderCommand::init(globalZOrder, modelView);
     
     this->_triangles = triangles;
     this->_modelView = modelView;

@@ -26,7 +26,7 @@ void Sprite::draw(Renderer* render, const Matrix& transform) {
     
     // 避免重复添加，只需要添加一次command指令，后续只需要用到draw绘制函数
     // 要先对cmd进行初始化
-    this->_triangleCommand->init(this->_tag, this->_texture->getTextureID(), this->getProgramState(), this->_blendType, this->_triangles, transform, false);
+    this->_triangleCommand->init(this->_tag, this->_texture->getTextureID(), this->getProgramState(), this->_blendType, this->_triangles, transform);
 
     render->addCommand(this->_triangleCommand, COMMAND_TRIANGEL);
     

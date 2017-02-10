@@ -40,7 +40,6 @@ bool Game::initGame() {
     
     this->_render->reset();
     this->initMatrixStack();
-    this->setGLDefaultValues();
     return true;
 }
 
@@ -53,6 +52,12 @@ void Game::setGLView(GLView* openView) {
     if (_glView != openView) {
         this->_glView = openView;
         this->_render->initGLView();
+        
+        this->_viewSize = this->_glView->getVisibleSize();
+        
+        if (_glView) {
+            this->setGLDefaultValues();
+        }
     }
 }
 

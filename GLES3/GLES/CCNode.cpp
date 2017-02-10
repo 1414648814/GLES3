@@ -38,7 +38,6 @@ Node::Node() :
     this->_transform = Matrix::identity();
 }
 
-
 bool Node::init() {
     this->_renderer = new (std::nothrow) Renderer;
     return true;
@@ -334,11 +333,25 @@ void Node::addChild(Node* node, ssize_t tag) {
     this->_childrens.push_back(node);
 }
 
-void Node::removeChidren() {
-    if (this->_childrens.empty()) {
-        return ;
+void Node::removeAllChildren() {
+    for (const auto& child : _childrens)
+    {
+        delete child;
     }
-    else {
-        this->_childrens.clear();
+    
+    _childrens.clear();
+}
+
+void Node::removeNode(Node* node) {
+    for (auto itr = _childrens.begin(); itr != _childrens.end(); itr++) {
+        if (*itr == node) {
+            if ((*itr)->getChildrenCnt() == 0) {
+                return ;
+            }
+            else {
+                _childrens.erase(itr);
+                return ;
+            }
+        }
     }
 }

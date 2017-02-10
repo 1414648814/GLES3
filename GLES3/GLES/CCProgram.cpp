@@ -247,6 +247,7 @@ void Program::setVertexAttribPointer(VERTEX_ATTRIB_TYPE type) {
 void Program::setUniformForBuilts(const Matrix& matMV) {
     // 获取模型视图矩阵
     auto& mat = this->_game->getMatrix(MATRIX_STACK_PROJECTION);
+    
     // 设置Uniform类型
     if (this->_builtInUniforms[UNIFORM_TYPE_P_MATRIX] != -1) {
         glUniformMatrix4fv(this->_builtInUniforms[UNIFORM_TYPE_P_MATRIX], 1, GL_FALSE, mat.m);

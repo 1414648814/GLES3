@@ -14,41 +14,28 @@
 #include <vector>
 #include "CCMatrix.h"
 #include "CCPoint.h"
+#include "CCNode.h"
 
-class Sprite;
-class Node;
 class Renderer;
 class Camera;
 
-class Scene {
+class Scene : public Node {
 public:
+    
+    static Scene* create();
+    
     /**
      *  初始化
      */
-    virtual bool init();
+    bool init() override;
+    bool initWithSize(const CCSize& size);
     
-    /**
-     *  添加结点
-     */
-    void addNode(Node*);
-    
-    /**
-     *  删除结点
-     */
-    void removeAllNode();
-    void removeNode(Node*);
+    using Node::addChild;
     
     /**
      *  绘制结点
      */
-    void render(Renderer*);
-    
-    /**
-     *  访问结点
-     */
-    void visitNode();
-    
-    static Scene* create();
+    virtual void render(Renderer*);
     
     Matrix getSceneTransform();
     

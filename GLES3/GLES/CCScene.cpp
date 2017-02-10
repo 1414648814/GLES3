@@ -7,8 +7,6 @@
 //
 
 #include "CCScene.h"
-#include "CCNode.h"
-#include "CCSprite.h"
 #include "CCRenderer.h"
 #include "CCGame.h"
 #include "CCCamera.h"
@@ -16,14 +14,19 @@
 Scene::Scene() {
     this->_render = NULL;
     this->_defaultCamera = Camera::create();
-    this->addNode(this->_defaultCamera);
     this->_modelMatrix.identity();
     
     this->_nodes.clear();
+    this->addChild(this->_defaultCamera, 1);
 }
 
 bool Scene::init() {
-    
+    auto size = Game::getInstance()->getVisibleSize();
+    return initWithSize(size);
+}
+
+bool Scene::initWithSize(const CCSize& size) {
+    setContentSize(size);
     return true;
 }
 
@@ -33,29 +36,6 @@ Scene* Scene::create() {
         return scene;
     }
     return nullptr;
-}
-
-// 添加子节点
-void Scene::addNode(Node* node) {
-    for (auto it = this->_nodes.begin(); it != this->_nodes.end(); it++) {
-        if (*it == node) {
-            std::cout << "the node already added." << std::endl;
-            return ;
-        }
-    }
-    this->_nodes.push_back(node);
-}
-
-/**
- *  递归访问结点并且进行渲染
- */
-void Scene::visitNode() {
-    for (auto it = this->_nodes.begin(); it != this->_nodes.end(); it++) {
-        auto node = *it;
-        if (node) {
-            node->visit();
-        }
-    }
 }
 
 // 场景的绘制
@@ -70,12 +50,12 @@ void Scene::render(Renderer* render) {
         const auto& modelView = this->getSceneTransform();
         
         game->pushMatrix(MATRIX_STACK_PROJECTION);
-        game->loadMatrix(modelView, MATRIX_STACK_PROJECTION);
+        game->loadMatrix(Camera::_visitingCamera->getViewProjectionMatrix(), MATRIX_STACK_PROJECTION);
         
         this->_render = render;
         
         // 访问所有子结点
-        this->visitNode();
+        visit(render, modelView);
         
         // 开始渲染
         this->_render->render();
@@ -83,24 +63,6 @@ void Scene::render(Renderer* render) {
         game->popMatrix(MATRIX_STACK_PROJECTION);
         
         Camera::_visitingCamera = nullptr;
-    }
-}
-
-void Scene::removeAllNode() {
-    this->_nodes.clear();
-}
-
-void Scene::removeNode(Node* node) {
-    for (auto itr = this->_nodes.begin(); itr != this->_nodes.end(); itr++) {
-        if (*itr == node) {
-            if ((*itr)->getChildrenCnt() == 0) {
-                return ;
-            }
-            else {
-                (*itr)->removeChidren();
-                return ;
-            }
-        }
     }
 }
 
