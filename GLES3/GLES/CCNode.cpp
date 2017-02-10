@@ -16,7 +16,7 @@
 Node::Node() :
   _renderer(NULL)
 , _shaderState(NULL)
-, _isUpdateTransform(false)
+, _isUpdateTransform(true)
 , _position(Vector2(0,0))
 , _positionZ(0)
 , _localZOrder(0)
@@ -103,7 +103,7 @@ void Node::setPosition3D(Vector3 pos) {
 }
 
 const Vector3 Node::getPosition3D() const {
-    return this->_postion3D;
+    return Vector3(this->_position.x, this->_position.y, this->_positionZ);
 }
 
 void Node::setNodeName(std::string name) {

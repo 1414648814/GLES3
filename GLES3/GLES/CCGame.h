@@ -81,7 +81,7 @@ public:
     bool initMatrixStack();
     
     // 弹出矩阵
-    const Matrix& popMatrix(MATRIX_STACK_TYPE type);
+    void popMatrix(MATRIX_STACK_TYPE type);
     
     // 压入矩阵
     void pushMatrix(MATRIX_STACK_TYPE type);

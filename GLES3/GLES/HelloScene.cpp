@@ -36,8 +36,8 @@ bool HelloScene::init() {
     auto visibleSize = Game::getInstance()->getVisibleSize();
     
     auto sp = Sprite::create("/Users/staff/Desktop/GLES3/GLES3/wall.jpg", 1);
-    sp->setAnchorPoint(Vector2(0.5, 0.5));
-    sp->setPosition(Vector2(visibleSize.width/2, visibleSize.height/2));
+    sp->setAnchorPoint(Vector2(0.0, 0.0));
+    sp->setPosition(Vector2(150, 50));
     this->addChild(sp, 1);
     return true;
 }

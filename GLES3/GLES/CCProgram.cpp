@@ -248,6 +248,14 @@ void Program::setUniformForBuilts(const Matrix& matMV) {
     // 获取模型视图矩阵
     auto& mat = this->_game->getMatrix(MATRIX_STACK_PROJECTION);
     
+    std::cout << ".....matrixP...." << std::endl;
+    for (int i = 0; i < 16; i++) {
+        if (i % 4 == 0) {
+            std::cout << std::endl;
+        }
+        std::cout << i << "->" << mat.m[i] << "  ";
+    }
+    
     // 设置Uniform类型
     if (this->_builtInUniforms[UNIFORM_TYPE_P_MATRIX] != -1) {
         glUniformMatrix4fv(this->_builtInUniforms[UNIFORM_TYPE_P_MATRIX], 1, GL_FALSE, mat.m);

@@ -641,6 +641,13 @@ void Matrix::getBackVector(Vector3* dst) const
     dst->z = m[10];
 }
 
+Matrix Matrix::getInversed() const
+{
+    Matrix mat(*this);
+    mat.invert();
+    return mat;
+}
+
 bool Matrix::invert()
 {
     return invert(this);

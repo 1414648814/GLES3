@@ -33,5 +33,3 @@ void CustomCommand::execute()
         func();
     }
 }
-
-

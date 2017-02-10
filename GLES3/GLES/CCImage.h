@@ -64,8 +64,6 @@ public:
     
     std::string getPath() const;
     
-    
-    
 protected:
     ImageType _type;
     PNGImageColorType _colorType; //目前只用png的图片，其他后面支持

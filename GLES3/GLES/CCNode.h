@@ -54,9 +54,9 @@ public:
     virtual void visit(Renderer*, const Matrix&);
     
     // 计算模型矩阵
-    const Matrix& getNodeToParentTransform() const;
-    Matrix transform(const Matrix &parentTransform);
-    void caculateTransform(const Matrix&);
+    virtual const Matrix& getNodeToParentTransform() const;
+    virtual Matrix transform(const Matrix &parentTransform);
+    virtual void caculateTransform(const Matrix&);
     
     /**
      *  对program进行操作
