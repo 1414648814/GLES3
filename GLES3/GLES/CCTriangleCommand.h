@@ -49,7 +49,7 @@ public:
     /**
      * 初始化
      */
-    bool init(float, GLuint, ProgramState*, BlendFunc, const Triangles&, const Matrix&, bool);
+    bool init(float, GLuint, ProgramState*, BlendFunc, const Triangles&, const Matrix&);
     
     // 生成材质ID
     void generateMatrialID();

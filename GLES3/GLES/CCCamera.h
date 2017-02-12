@@ -110,6 +110,9 @@ public:
     mutable Matrix _viewInv;
     mutable Matrix _viewProjection;
     Scene* _scene; // 记录当前场景
+    
+    mutable bool  _viewProjectionDirty;
+    bool _viewProjectionUpdated; //Whether or not the viewprojection matrix was updated since the last frame.
 };
 
 #endif /* CCCamera_hpp */

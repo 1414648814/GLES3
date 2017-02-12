@@ -54,9 +54,9 @@ public:
     virtual void visit(Renderer*, const Matrix&);
     
     // 计算模型矩阵
-    const Matrix& getNodeToParentTransform() const;
-    Matrix transform(const Matrix &parentTransform);
-    void caculateTransform(const Matrix&);
+    virtual const Matrix& getNodeToParentTransform() const;
+    virtual Matrix transform(const Matrix &parentTransform);
+    virtual void caculateTransform(const Matrix&);
     
     /**
      *  对program进行操作
@@ -89,6 +89,10 @@ public:
     
     void addChild(Node*, ssize_t);
     
+    // 删除节点
+    virtual void removeNode(Node*);
+    virtual void removeAllChildren();
+    
     inline std::vector<Node *> getChildren() const {
         return _childrens;
     }
@@ -114,8 +118,6 @@ public:
     
     // 是否在照相机的视角内，决定要不要去绘制这个节点
     virtual bool isVisitableByVisitingCamera() const;
-    
-    virtual void removeChidren();
     
     virtual inline int getLocalZOrder() {
         return _localZOrder;

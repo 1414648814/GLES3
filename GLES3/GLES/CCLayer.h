@@ -10,14 +10,31 @@
 #define CCLayer_hpp
 
 #include <stdio.h>
+#include <iostream>
+#include <vector>
+#include "CCMatrix.h"
+#include "CCPoint.h"
+#include "CCNode.h"
+#include "CCCustomCommand.h"
 
-class Layer {
+class Layer : public Node {
 public:
     static Layer* create();
     
-protected:
+    virtual void draw(Renderer *renderer, const Matrix &transform) override;
+    virtual void setContentSize(const CCSize & var) override;
+    
     Layer();
-    ~Layer();
+    virtual ~Layer() {}
+    
+protected:
+
+    void onDraw(const Matrix& transform);
+    
+    Vector2 _squareVertices[4];
+    Color4F  _squareColors[4];
+    CustomCommand _customCommand;
+    Vector3 _noMVPVertices[4];
 };
 
 #endif /* CCLayer_hpp */

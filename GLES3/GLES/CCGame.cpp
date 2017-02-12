@@ -40,7 +40,6 @@ bool Game::initGame() {
     
     this->_render->reset();
     this->initMatrixStack();
-    this->setGLDefaultValues();
     return true;
 }
 
@@ -53,6 +52,12 @@ void Game::setGLView(GLView* openView) {
     if (_glView != openView) {
         this->_glView = openView;
         this->_render->initGLView();
+        
+        this->_viewSize = this->_glView->getVisibleSize();
+        
+        if (_glView) {
+            this->setGLDefaultValues();
+        }
     }
 }
 
@@ -509,15 +514,15 @@ void Game::test() {
 }
 
 void Game::mainLoop() {
-//    if (this->_isValid) {
-//        //std::cout << "有效状态，正在进行绘制..." << std::endl;
-//        this->drawScene();
-//    }
-//    else {
-//        std::cout << "无效状态下不进行绘制..." << std::endl;
-//    }
+    if (this->_isValid) {
+        //std::cout << "有效状态，正在进行绘制..." << std::endl;
+        this->drawScene();
+    }
+    else {
+        std::cout << "无效状态下不进行绘制..." << std::endl;
+    }
     
-    this->test();
+//    this->test();
 }
 
 void Game::startAnimation() {
@@ -560,24 +565,15 @@ bool Game::initMatrixStack() {
 }
 
 // 弹出矩阵
-const Matrix& Game::popMatrix(MATRIX_STACK_TYPE type) {
+void Game::popMatrix(MATRIX_STACK_TYPE type) {
     if (type == MATRIX_STACK_MODELVIEW) {
-        if (this->_modelViewStack.size() == 0) {
-            std::cout << "modelViewStack size is 0..." << std::endl;
-            return nullptr;
-        }
-        return this->_modelViewStack.top();
+        this->_modelViewStack.pop();
     }
     else if (type == MATRIX_STACK_PROJECTION) {
-        if (this->_projectionStack.size() == 0) {
-            std::cout << "modelViewStack size is 0..." << std::endl;
-            return nullptr;
-        }
-        return this->_projectionStack.top();
+        this->_projectionStack.pop();
     }
     else {
         std::cout << "unkown matrix type..." << std::endl;
-        return nullptr;
     }
 }
 
@@ -609,22 +605,14 @@ void Game::loadMatrix(const Matrix& mat, MATRIX_STACK_TYPE type) {
 
 const Matrix& Game::getMatrix(MATRIX_STACK_TYPE type) {
     if (type == MATRIX_STACK_MODELVIEW) {
-        if (this->_modelViewStack.size() == 0) {
-            std::cout << "modelViewStack size is 0..." << std::endl;
-            return nullptr;
-        }
         return this->_modelViewStack.top();
     }
     else if (type == MATRIX_STACK_PROJECTION) {
-        if (this->_projectionStack.size() == 0) {
-            std::cout << "projectionStack size is 0..." << std::endl;
-            return nullptr;
-        }
         return this->_projectionStack.top();
     }
     else {
         std::cout << "unkown matrix type..." << std::endl;
-        return nullptr;
+        return  _modelViewStack.top();
     }
 }
 

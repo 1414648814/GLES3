@@ -52,6 +52,7 @@
 		A2463DE01E48593300AE7A90 /* CCCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2463DDE1E48593300AE7A90 /* CCCamera.cpp */; };
 		A25246251E2DF91800A075B0 /* libSOIL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A25246241E2DF91800A075B0 /* libSOIL.a */; };
 		A252800B1E31F973002EFF88 /* CCOPGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A252800A1E31F973002EFF88 /* CCOPGL.cpp */; };
+		A25F814C1E4D9BE7001F6F3C /* CCCustomCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A25F814A1E4D9BE7001F6F3C /* CCCustomCommand.cpp */; };
 		A295F8941E4432520008E49D /* CCAffineTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A295F8921E4432520008E49D /* CCAffineTransform.cpp */; };
 		A295F8981E44386A0008E49D /* CCPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A295F8971E44386A0008E49D /* CCPoint.cpp */; };
 		A2F5E5561E4C34CD00D342EF /* CCLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2F5E5541E4C34CD00D342EF /* CCLayer.cpp */; };
@@ -146,6 +147,8 @@
 		A25246241E2DF91800A075B0 /* libSOIL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSOIL.a; path = GLES3/GLES/libSOIL.a; sourceTree = "<group>"; };
 		A252800A1E31F973002EFF88 /* CCOPGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCOPGL.cpp; path = GLES/CCOPGL.cpp; sourceTree = "<group>"; };
 		A254B8441E235219000E8DD4 /* CCShaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCShaderFile.h; path = GLES/CCShaderFile.h; sourceTree = "<group>"; };
+		A25F814A1E4D9BE7001F6F3C /* CCCustomCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCCustomCommand.cpp; path = GLES/CCCustomCommand.cpp; sourceTree = "<group>"; };
+		A25F814B1E4D9BE7001F6F3C /* CCCustomCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCCustomCommand.h; path = GLES/CCCustomCommand.h; sourceTree = "<group>"; };
 		A295F8921E4432520008E49D /* CCAffineTransform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCAffineTransform.cpp; path = GLES/CCAffineTransform.cpp; sourceTree = "<group>"; };
 		A295F8931E4432520008E49D /* CCAffineTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAffineTransform.h; path = GLES/CCAffineTransform.h; sourceTree = "<group>"; };
 		A295F8971E44386A0008E49D /* CCPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CCPoint.cpp; path = GLES/CCPoint.cpp; sourceTree = "<group>"; };
@@ -275,10 +278,12 @@
 				5E4B33F21E1C60BA00565C9B /* CCRenderCommand.h */,
 				5E4B33FE1E1C60BA00565C9B /* CCTriangleCommand.h */,
 				5E4B33FD1E1C60BA00565C9B /* CCTriangleCommand.cpp */,
+				A25F814B1E4D9BE7001F6F3C /* CCCustomCommand.h */,
+				A25F814A1E4D9BE7001F6F3C /* CCCustomCommand.cpp */,
 				5E4B33F71E1C60BA00565C9B /* CCShader.cpp */,
 				5E4B33F81E1C60BA00565C9B /* CCShader.h */,
-				5E4B33FB1E1C60BA00565C9B /* CCTexture.cpp */,
 				5E4B33FC1E1C60BA00565C9B /* CCTexture.h */,
+				5E4B33FB1E1C60BA00565C9B /* CCTexture.cpp */,
 				5E4B33FF1E1C60BA00565C9B /* CCType.cpp */,
 				5E4B34001E1C60BA00565C9B /* CCType.h */,
 				5E4B34011E1C60BA00565C9B /* CCVector2.cpp */,
@@ -391,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A25F814C1E4D9BE7001F6F3C /* CCCustomCommand.cpp in Sources */,
 				A295F8981E44386A0008E49D /* CCPoint.cpp in Sources */,
 				5E4B341F1E1C60BA00565C9B /* CCScene.cpp in Sources */,
 				A295F8941E4432520008E49D /* CCAffineTransform.cpp in Sources */,

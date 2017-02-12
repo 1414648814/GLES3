@@ -20,7 +20,7 @@ public:
     virtual ~RenderCommand(); //用来作为基类的继承
     
     // 所有的渲染的指令会被调用，暂时默认使用的2d，不考虑3d，所以只使用第一个参数
-    bool init(float, const Matrix&, bool);
+    bool init(float, const Matrix&);
     
     /**
      * 获取命令的类型

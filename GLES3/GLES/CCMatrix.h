@@ -462,6 +462,10 @@ public:
      * @param dst The destination vector.
      */
     void getBackVector(Vector3* dst) const;
+    
+    
+    //
+    Matrix getInversed() const;
 
     /**
      * Inverts this matrix.

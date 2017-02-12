@@ -91,7 +91,8 @@ static const char* DEFAULT_SHADER_UNIFORMS =
 typedef enum {
     COMMAND_TRIANGEL = 0, //三角形
     COMMAND_QUAD = 1, //长方形
-    COMMAND_UNKOWN = 2, //未知
+    COMMAND_COMMON = 2, //自定义
+    COMMAND_UNKOWN = 3, //未知
 } COMMAND_TYPE;
 
 // 渲染的类型
@@ -147,5 +148,11 @@ typedef enum {
  converts radians to degrees
  */
 #define CC_RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) * 57.29577951f) // PI * 180
+
+#define CC_CALLBACK_0(__selector__,__target__, ...) std::bind(&__selector__,__target__, ##__VA_ARGS__)
+#define CC_CALLBACK_1(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, ##__VA_ARGS__)
+#define CC_CALLBACK_2(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, std::placeholders::_2, ##__VA_ARGS__)
+#define CC_CALLBACK_3(__selector__,__target__, ...) std::bind(&__selector__,__target__, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, ##__VA_ARGS__)
+
 
 #endif /* CCConfig_h */
